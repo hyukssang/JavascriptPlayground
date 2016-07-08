@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="loading.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<title>Loading</title>
+</head>
+<body>
+	<div class="circle circle-lg">
+		<div class="circle circle-sm"></div>
+	</div>
+	<script>
+		$(document).ready(function(){
+			var anim1 = function(target, time){
+				$(target).animate({
+					width: '+=15px',
+					height: '+=15px'
+				}, {
+					duration: time,
+					queue: false,
+					complete: function(){
+						$(target).animate({
+							width: '-=15px',
+							height: '-=15px'
+						},{
+							duration: time,
+							queue: false,
+							complete: function(){
+								anim1(target, time);
+							}
+						});
+					}
+				});
+			}
+			var anim2 = function(target, time){
+				$(target).animate({
+					width: '-=15px',
+					height: '-=15px'
+				}, {
+					duration: time,
+					queue: false,
+					complete: function(){
+						$(target).animate({
+							width: '+=15px',
+							height: '+=15px'
+						},{
+							duration: time,
+							queue: false,
+							complete: function(){
+								anim2(target, time);
+							}
+						});
+					}
+				});
+			}
+			$.when(anim1($('.circle-sm'), 800), anim2($('.circle-lg'), 800));
+		});
+	</script>
+</body>
+</html>
