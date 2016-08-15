@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>X</title>
+	<style>
+		button{
+			outline: none;
+		}
+		.icon{
+			background-color: #fff;
+			border: 0;
+
+			width: 32px;
+			height: 32px;
+		}
+		.icon-plus{
+			background-image: url("icon_plus.png");
+		}
+	</style>
+</head>
+<body>
+	<button class="icon icon-plus"></button>
+	<script>
+		var element = document.getElementsByClassName("icon-plus")[0];
+		element.addEventListener("click", spin, false);
+		var clicked = false;
+		function spin(){
+			if(clicked){
+				var start = 225;
+				var end = 0;
+				var interval = setInterval(frame, 1);
+				function frame(){
+					if(start == end){
+						clearInterval(interval);
+					}
+					else{
+						start--;
+						element.style.WebkitTransform = "rotate(" + start + "deg)";
+					}
+				}
+			}
+			else{
+				var start = 0;
+				var end = 225;
+				var interval = setInterval(frame, 1);
+				function frame(){
+					if(start == end){
+						clearInterval(interval);
+					}
+					else{
+						start++;
+						element.style.WebkitTransform = "rotate(" + start + "deg)";
+					}
+				}
+			}
+			clicked = !clicked;
+		}
+	</script>
+</body>
+</html>

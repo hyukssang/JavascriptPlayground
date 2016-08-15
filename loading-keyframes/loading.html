@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Loading-Google Style</title>
+	<style>
+		.circle{
+			display: inline-block;
+		}
+		.loading-google-style{
+			border-top-color: #EA4335;
+			border-right-color: #4285F4;
+			border-bottom-color: #34A853;
+			border-left-color: #FBBC05;
+
+			border-width: 10px;
+			border-style: solid;
+			border-radius: 50px;
+
+			width: 50px;
+			height: 50px;
+
+			animation: spin 2s cubic-bezier(.17,.67,.83,.67) infinite;
+		}
+		@keyframes spin {
+			0%{
+				transform: rotate(0deg);
+			}
+			100%{
+				transform: rotate(360deg);
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="circle loading-google-style">
+
+	</div>
+</body>
+</html>
